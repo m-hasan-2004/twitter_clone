@@ -1,4 +1,4 @@
-// scripts.js
+// home.js
 
 document.addEventListener("DOMContentLoaded", function() {
     const tabLinks = document.querySelectorAll(".tab-link");

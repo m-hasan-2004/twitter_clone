@@ -1,39 +1,91 @@
-<!-- templates/core/home.html -->
 {% extends 'base/base.html' %}
-
+{% load static %}
 {% block title %}Home - Twitter Clone{% endblock %}
 
 {% block content %}
-    <!-- Navigation Bar -->
-    <nav class="navbar">
-        <ul>
-            <li><a href="#" id="home-tab" class="tab-link active" data-tab="home">Home</a></li>
-            <li><a href="#" id="explore-tab" class="tab-link" data-tab="explore">Explore</a></li>
-            <li><a href="#" id="account-tab" class="tab-link" data-tab="account">Account</a></li>
-        </ul>
-    </nav>
-
-    <!-- Main Content -->
-    <div class="tab-content">
-        <!-- Home Section -->
-        <div id="home" class="tab-pane active">
-            <h2>Home</h2>
-            <p>Welcome to your homepage!</p>
-            <!-- Add more content here -->
+<div class="container">
+    <!-- Home Section -->
+    <section id="home" class="tab-pane active">
+        <div class="section-header">
+            <h2>Welcome to Twitter Clone</h2>
         </div>
-
-        <!-- Explore Section -->
-        <div id="explore" class="tab-pane">
-            <h2>Explore</h2>
-            <p>Here, you'll see the latest tweets from the accounts you follow. Discover new topics.</p>
-            <!-- Add more content here -->
+        <div class="welcome-banner">
+            <img src="{% static 'images/twitter_home.jpeg' %}" alt="Twitter Home" class="responsive-img">
+            <div class="welcome-text">
+                <p>Stay connected with the world in real-time. Follow, tweet, and interact with your followers right here on Twitter Clone.</p>
+            </div>
         </div>
+    </section>
 
-        <!-- Account Section -->
-        <div id="account" class="tab-pane">
-            <h2>Account</h2>
-            <p>Manage your account settings and personal information.</p>
-            <!-- Add more content here -->
+    <!-- Description Section -->
+    <section id="description" class="tab-pane">
+        <div class="section-header">
+            <h2>About Twitter Clone</h2>
         </div>
-    </div>
+        <div class="description-content">
+            <img src="{% static 'images/description.jpg' %}" alt="Description" class="responsive-img">
+            <p>Twitter Clone is a microblogging platform that allows you to share short messages with your followers. Stay updated with the latest trends and interact with people across the globe.</p>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="tab-pane">
+        <div class="section-header">
+            <h2>Features</h2>
+        </div>
+        <div class="features-list">
+            <img src="{% static 'images/features.jpg' %}" alt="Features" class="responsive-img">
+            <ul>
+                <li>Follow and Unfollow Users</li>
+                <li>Block and Unblock Accounts</li>
+                <li>View Follower and Following Counts</li>
+                <li>Post, Edit, and Delete Tweets</li>
+                <li>Comment on Tweets, Edit, and Delete Comments</li>
+                <li>Sign Up, Sign In, and Manage Your Account</li>
+                <li>Delete Your Account</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Getting Started Section -->
+    <section id="getting-started" class="tab-pane">
+        <div class="section-header">
+            <h2>How to Start Using Twitter Clone</h2>
+        </div>
+        <div class="getting-started-content">
+            <img src="{% static 'images/getting_started.jpg' %}" alt="Getting Started" class="responsive-img">
+            <p>It's easy to get started with Twitter Clone. Sign up for a free account, follow users, and start tweeting. Customize your profile, and manage your privacy settings for a better experience.</p>
+            <ol>
+                <li>Sign Up or Sign In</li>
+                <li>Update Your Profile</li>
+                <li>Follow Interesting Accounts</li>
+                <li>Start Tweeting!</li>
+            </ol>
+        </div>
+    </section>
+
+    <!-- User Interaction Section -->
+    <section id="user-interaction" class="tab-pane">
+        <div class="section-header">
+            <h2>User Interaction</h2>
+        </div>
+        <div class="user-interaction-content">
+            <img src="{% static 'images/user_interaction.jpg' %}" alt="User Interaction" class="responsive-img">
+            <p>Engage with your audience by replying to tweets, liking posts, and sharing content. Use the block feature to control who interacts with you. Manage your followers and stay connected with the community.</p>
+        </div>
+    </section>
+
+    <!-- Account Management Section -->
+    <section id="account-management" class="tab-pane">
+        <div class="section-header">
+            <h2>Account Management</h2>
+        </div>
+        <div class="account-management-content">
+            <img src="{% static 'images/account_management.jpg' %}" alt="Account Management" class="responsive-img">
+            <p>Keep your account secure by regularly updating your password. Manage your account settings, privacy preferences, and personal information with ease. Delete your account anytime if you wish to leave the platform.</p>
+        </div>
+    </section>
+
+</div>
+<script src="{% static 'js/home.js' %}"></script>
 {% endblock %}
