@@ -1,0 +1,39 @@
+<!-- templates/core/home.html -->
+{% extends 'base/base.html' %}
+
+{% block title %}Home - Twitter Clone{% endblock %}
+
+{% block content %}
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul>
+            <li><a href="#" id="home-tab" class="tab-link active" data-tab="home">Home</a></li>
+            <li><a href="#" id="explore-tab" class="tab-link" data-tab="explore">Explore</a></li>
+            <li><a href="#" id="account-tab" class="tab-link" data-tab="account">Account</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="tab-content">
+        <!-- Home Section -->
+        <div id="home" class="tab-pane active">
+            <h2>Home</h2>
+            <p>Welcome to your homepage!</p>
+            <!-- Add more content here -->
+        </div>
+
+        <!-- Explore Section -->
+        <div id="explore" class="tab-pane">
+            <h2>Explore</h2>
+            <p>Here, you'll see the latest tweets from the accounts you follow. Discover new topics.</p>
+            <!-- Add more content here -->
+        </div>
+
+        <!-- Account Section -->
+        <div id="account" class="tab-pane">
+            <h2>Account</h2>
+            <p>Manage your account settings and personal information.</p>
+            <!-- Add more content here -->
+        </div>
+    </div>
+{% endblock %}
