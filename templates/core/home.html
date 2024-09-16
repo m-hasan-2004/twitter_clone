@@ -1,7 +1,9 @@
 {% extends 'base/base.html' %}
 {% load static %}
-{% block title %}Home - Twitter Clone{% endblock %}
-
+{% block title %}Twitter Clone - Home{% endblock %}
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock css %}
 {% block content %}
 <div class="container">
     <!-- Home Section -->
@@ -10,9 +12,20 @@
             <h2>Welcome to Twitter Clone</h2>
         </div>
         <div class="welcome-banner">
-            <img src="{% static 'images/twitter_home.jpeg' %}" alt="Twitter Home" class="responsive-img">
+            <img src="{% static 'images/twitter_home.jpg' %}" alt="Twitter Home" class="responsive-img">
             <div class="welcome-text">
-                <p>Stay connected with the world in real-time. Follow, tweet, and interact with your followers right here on Twitter Clone.</p>
+                <p>Welcome to Twitter Clone, a microblogging platform that allows you to share short, meaningful messages with your followers.
+                    Stay connected with the latest trends, join global conversations, and engage with people across the world. With a user-friendly
+                    interface, Twitter Clone makes it simple to post, edit, and delete tweets, giving you complete control over your online presence.
+                    Whether you're sharing updates or participating in trending discussions, Twitter Clone is designed to keep you informed and connected.
+                </p>
+                <p>
+                    One of the key features of the Twitter Clone is its robust user management options.
+                    You can follow or unfollow users based on your interests, block or unblock accounts for a more personalized experience,
+                    and view real-time updates on your follower and following counts. This functionality ensures that users can curate their online community, 
+                    maintain control over who they interact with, and foster a safe, engaging social media environment.
+                    With just a few clicks, users can manage who they see and who sees them.
+                </p>
             </div>
         </div>
     </section>
@@ -24,7 +37,12 @@
         </div>
         <div class="description-content">
             <img src="{% static 'images/description.jpg' %}" alt="Description" class="responsive-img">
-            <p>Twitter Clone is a microblogging platform that allows you to share short messages with your followers. Stay updated with the latest trends and interact with people across the globe.</p>
+            <p>Twitter Clone offers a comprehensive set of features to enhance your social media experience. You can follow or unfollow users,
+                block or unblock accounts, and view follower and following counts to manage your interactions. Comment on tweets, edit or delete
+                your comments, and control who you engage with to create a personalized community. Account management is also seamless, allowing
+                you to sign up, log in, and manage your profile with ease. If you ever decide to step away, you can even delete your account,
+                giving you full flexibility and control over your social media journey.
+            </p>
         </div>
     </section>
 
@@ -46,46 +64,6 @@
             </ul>
         </div>
     </section>
-
-    <!-- Getting Started Section -->
-    <section id="getting-started" class="tab-pane">
-        <div class="section-header">
-            <h2>How to Start Using Twitter Clone</h2>
-        </div>
-        <div class="getting-started-content">
-            <img src="{% static 'images/getting_started.jpg' %}" alt="Getting Started" class="responsive-img">
-            <p>It's easy to get started with Twitter Clone. Sign up for a free account, follow users, and start tweeting. Customize your profile, and manage your privacy settings for a better experience.</p>
-            <ol>
-                <li>Sign Up or Sign In</li>
-                <li>Update Your Profile</li>
-                <li>Follow Interesting Accounts</li>
-                <li>Start Tweeting!</li>
-            </ol>
-        </div>
-    </section>
-
-    <!-- User Interaction Section -->
-    <section id="user-interaction" class="tab-pane">
-        <div class="section-header">
-            <h2>User Interaction</h2>
-        </div>
-        <div class="user-interaction-content">
-            <img src="{% static 'images/user_interaction.jpg' %}" alt="User Interaction" class="responsive-img">
-            <p>Engage with your audience by replying to tweets, liking posts, and sharing content. Use the block feature to control who interacts with you. Manage your followers and stay connected with the community.</p>
-        </div>
-    </section>
-
-    <!-- Account Management Section -->
-    <section id="account-management" class="tab-pane">
-        <div class="section-header">
-            <h2>Account Management</h2>
-        </div>
-        <div class="account-management-content">
-            <img src="{% static 'images/account_management.jpg' %}" alt="Account Management" class="responsive-img">
-            <p>Keep your account secure by regularly updating your password. Manage your account settings, privacy preferences, and personal information with ease. Delete your account anytime if you wish to leave the platform.</p>
-        </div>
-    </section>
-
 </div>
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

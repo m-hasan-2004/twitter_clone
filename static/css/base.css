@@ -1,6 +1,5 @@
-/* Base Styles */
-
 /* General Body Styling */
+
 body {
     font-family: 'Arial', sans-serif;
     margin: 0;
@@ -11,18 +10,18 @@ body {
 
 /* Container Styling */
 .container {
-    max-width: 1200px;
+    max-width: 1800px;
     margin: 0 auto;
     padding: 20px;
     background-color: #ffffff;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 25px;
 }
 
 /* Header Styling */
 .header {
     background-color: #C41E3A;
-    padding: 20px 0;
+    padding: 10px 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     margin-bottom: 20px;
     text-align: center;
@@ -39,8 +38,6 @@ body {
 
 .navbar ul {
     list-style: none;
-    padding: 0;
-    margin: 0;
     display: flex;
 }
 
@@ -65,7 +62,7 @@ body {
     display: block;
     width: 0;
     height: 2px;
-    background: #ffeb3b;
+    background: black;
     transition: width 0.3s;
     position: absolute;
     bottom: -5px;
@@ -74,150 +71,6 @@ body {
 
 .navbar a:hover::after {
     width: 100%;
-}
-
-/* Main Content Styling */
-main {
-    padding: 20px 0;
-}
-
-/* Section Headers */
-.section-header {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.section-header h2 {
-    color: #C41E3A;
-    font-size: 24px;
-}
-
-/* Welcome Banner */
-.welcome-banner {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.welcome-banner img {
-    max-width: 50%;
-    border-radius: 8px;
-    margin-right: 20px;
-}
-
-.welcome-text {
-    max-width: 50%;
-}
-
-.welcome-text p {
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-/* Description Section */
-.description-content {
-    display: flex;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.description-content img {
-    max-width: 50%;
-    border-radius: 8px;
-    margin-right: 20px;
-}
-
-.description-content p {
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-/* Features List */
-.features-list {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.features-list img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.features-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.features-list li {
-    font-size: 18px;
-    margin-bottom: 10px;
-}
-
-/* Getting Started Section */
-.getting-started-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.getting-started-content img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.getting-started-content p {
-    font-size: 18px;
-    line-height: 1.5;
-    margin-bottom: 20px;
-}
-
-.getting-started-content ol {
-    font-size: 18px;
-    list-style: decimal;
-    padding-left: 20px;
-}
-
-/* User Interaction Section */
-.user-interaction-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.user-interaction-content img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.user-interaction-content p {
-    font-size: 18px;
-    line-height: 1.5;
-}
-
-/* Account Management Section */
-.account-management-content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: 20px;
-}
-
-.account-management-content img {
-    max-width: 100%;
-    border-radius: 8px;
-    margin-bottom: 20px;
-}
-
-.account-management-content p {
-    font-size: 18px;
-    line-height: 1.5;
 }
 
 /* Footer Styling */
@@ -238,64 +91,15 @@ main {
 
 .footer p {
     margin: 10px 0;
-    font-size: 14px;
+    font-size: 16px;
 }
 
-.footer-link {
+.footer-link, .footer-social {
     color: white;
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
-.footer-link:hover {
+.footer-link:hover, .footer-social:hover {
     color: black;
-}
-
-.footer-social {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.3s ease;
-}
-
-.footer-social:hover {
-    color: black;
-}
-
-/* Responsive Images */
-.responsive-img {
-    max-width: 100%;
-    height: auto;
-    border-radius: 8px;
-}
-
-/* Header Icon Styling */
-.navbar ul {
-    display: flex;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-}
-
-.navbar li {
-    margin: 0 15px;
-}
-
-.navbar .nav-link {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-    font-size: 18px;
-}
-
-.navbar .nav-icon {
-    width: 20px;
-    height: 20px;
-    margin-right: 8px;
-}
-
-.navbar .nav-link:hover {
-    color: black; /* Example hover color */
-    transition: color 0.3s ease;
 }

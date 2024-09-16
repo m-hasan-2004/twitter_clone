@@ -1,0 +1,90 @@
+/* Section Headers */
+img {
+    box-shadow: 15px 15px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.section-header h2 {
+    color: #C41E3A;
+    font-size: 35px;
+    margin-bottom: 40px;
+}
+
+/* Welcome Banner */
+.welcome-banner {
+    display: flex;
+    align-items: center;
+    margin-bottom: 40px;
+}
+
+.welcome-banner img {
+    max-width: 50%;
+    border-radius: 25px;
+    margin-right: 20px;
+}
+
+.welcome-text {
+    max-width: 50%;
+}
+
+.welcome-text p {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* Description Section */
+.description-content {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.description-content img {
+    max-width: 50%;
+    border-radius: 25px;
+    margin-right: 20px;
+}
+
+.description-content p {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* Features List */
+.features-list {
+    display: flex;
+    align-items: center; /* Vertically aligns the text and image */
+    justify-content: flex-start; /* Positions items to the left (default behavior) */
+    margin-bottom: 20px;
+    gap: 20px; /* Adds space between the image and text */
+}
+
+.features-list img {
+    max-width: 44.5%; /* Set the width of the image */
+    border-radius: 25px;
+}
+
+.features-list ul {
+    max-width: 55%; /* Set the width of the text area */
+    list-style: disc inside; /* Ensures bullets are inside */
+    padding-left: 0; /* Remove padding */
+}
+
+.features-list li {
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* Responsive Images */
+.responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
