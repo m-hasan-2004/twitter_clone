@@ -1,11 +1,29 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
+from django.shortcuts import render, redirect
+from django.contrib.auth.decorators import login_required
+from accounts.forms import ProfileForm, PasswordChangeForm
 
-# Create your views here.
+@login_required
+def account_settings(request):
+    if request.method == 'POST':
+        profile_form = ProfileForm(request.POST, instance=request.user)
+        password_form = PasswordChangeForm(user=request.user, data=request.POST)
 
-class AccountSettingsView(View):
- 
-    def get(self, request, id):
-        account = get_object_or_404(id=id)
-        context = {"account": account}
-        return render(request=request, template_name="accounts/accounts_settings.html", context=context) 
+        if profile_form.is_valid():
+            profile_form.save()
+            return redirect('users:account_settings')
+
+        if password_form.is_valid():
+            password_form.save()
+            return redirect('users:account_settings')
+
+
+    else:
+        profile_form = ProfileForm(instance=request.user)
+        password_form = PasswordChangeForm(user=request.user)
+
+    return render(request, 'users/account_settings.html', {
+        'form_profile': profile_form,
+        'form_password': password_form,
+    })

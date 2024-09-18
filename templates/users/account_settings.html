@@ -1,1 +1,58 @@
 {% extends "base/base.html" %}
+{% load static %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/account_settings.css' %}">
+{% endblock css %}
+{% block content %}
+<div class="account-settings-container">
+    <div class="left-column">
+        <h1>Account Settings</h1>
+        <!-- Profile Update Section -->
+        <section class="profile-update">
+            <h2>Update Profile</h2>
+            <form method="post" action="{% url 'users:account_settings' %}">
+                {% csrf_token %}
+                {{ form_profile.as_p }}
+                <button type="submit" class="btn btn-primary">Update Profile</button>
+            </form>
+        </section>
+
+        <!-- Change Password Section -->
+        <section class="change-password">
+            <h2>Change Password</h2>
+            <form method="post" action="{% url 'users:account_settings' %}">
+                {% csrf_token %}
+                {{ form_password.as_p }}
+                <button type="submit" class="btn btn-primary">Change Password</button>
+            </form>
+        </section>
+    </div>
+
+    <div class="right-column">
+        <!-- Display User Profile -->
+        <div class="user-profile">
+            <img src= {{ user.pic.url }} alt="Profile Picture" class="profile-picture">
+            <h3>{{ user.username }}</h3>
+            <h4>{{ user.email }}</h3>
+
+            <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
+            
+            <!-- Log Out Button -->
+            <form method="post" action="{% url 'accounts:logout' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Log Out</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Modal Popup Structure -->
+<div id="popup-modal" class="modal">
+    <div class="modal-content">
+        <span class="close-btn">&times;</span>
+        <p id="popup-message"></p>
+    </div>
+</div>
+
+<script src="{% static 'js/account_settings.js' %}" defer></script>
+{% endblock %}
