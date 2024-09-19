@@ -5,6 +5,13 @@
     <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock css %}
 {% block content %}
+{% if messages %}
+  <div class="message-container">
+    {% for message in messages %}
+      <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
+{% endif %}
 <div class="container">
     <!-- Home Section -->
     <section id="home" class="tab-pane active">
@@ -55,12 +62,13 @@
             <img src="{% static 'images/home_page_pics/features.jpg' %}" alt="Features" class="responsive-img">
             <ul>
                 <li>Follow and Unfollow Users</li>
-                <li>Block and Unblock Accounts</li>
                 <li>View Follower and Following Counts</li>
                 <li>Post, Edit, and Delete Tweets</li>
                 <li>Comment on Tweets, Edit, and Delete Comments</li>
-                <li>Sign Up, Sign In, and Manage Your Account</li>
-                <li>Delete Your Account</li>
+                <li>Sign Up, Sign In, and Manage Your Account *</li>
+                <li>Delete Your Account *</li>
+                <li>Like & Dislike Posts</li>
+                <li>Log System </li>
             </ul>
         </div>
     </section>

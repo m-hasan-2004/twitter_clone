@@ -92,6 +92,12 @@ form p {
     background-color: #C41E3A;
     color: white;
 }
+
+.btn-danger-deleteaccount {
+    background-color: #C41E3A;
+    color: white;
+    margin-top: 2%;
+}
 /* pop up code*/
 
 /* The Modal (background) */

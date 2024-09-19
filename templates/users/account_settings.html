@@ -43,6 +43,10 @@
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Log Out</button>
             </form>
+            <form method="post" action="{% url 'accounts:delete_account' %}">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger-deleteaccount">Delete Account</button>
+            </form>
         </div>
     </div>
 </div>
