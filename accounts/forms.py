@@ -10,6 +10,10 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ['username', 'first_name', 'last_name', 'email']  # Adjust fields as needed
+        help_texts = {
+            'username': '',
+            'first_name': ''
+        }
         
 
 class CustomUserCreationForm(UserCreationForm):
@@ -23,5 +27,17 @@ class AuthenticationForm(AuthenticationForm):
         fields = ['username', 'password']
 
 class PasswordChangeForm(PasswordChangeForm):
-    class Meta:
-        model = User
+    old_password = forms.CharField(
+        label="Old Password",
+        widget=forms.PasswordInput,
+        help_text=""
+    )
+    new_password1 = forms.CharField(
+        label="New Password",
+        widget=forms.PasswordInput,
+        help_text=""
+    )
+    new_password2 = forms.CharField(
+        label="Confirm New Password",
+        widget=forms.PasswordInput,
+        help_text="")

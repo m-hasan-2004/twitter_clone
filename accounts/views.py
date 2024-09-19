@@ -37,14 +37,14 @@ class AccountSettingsView(LoginRequiredMixin, FormView):
 
     def get(self, request, *args, **kwargs):
         password_form = PasswordChangeForm(user=self.request.user)
-        return self.render_to_response(self.get_context_data(password_form=password_form, email_form=email_form))
+        return self.render_to_response(self.get_context_data(password_form=password_form))
 
     def post(self, request, *args, **kwargs):
         password_form = PasswordChangeForm(user=self.request.user, data=request.POST)
 
         if password_form.is_valid():
             user = password_form.save()
-            update_session_auth_hash(request, user)  # Keep user logged in after password change
+            update_session_auth_hash(request, user)
             messages.success(request, 'Your email and password have been updated successfully!')
             return self.form_valid(password_form)
 
