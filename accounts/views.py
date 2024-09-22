@@ -23,15 +23,13 @@ class SignupView(CreateView):
     def form_valid(self, form):
         user = form.save(commit=False)
         user.pic = form.cleaned_data.get('pic')
-        user.save()
-        login(self.request, user)
         return super().form_valid(form)
-
+    
 
 class CustomLoginView(LoginView):
     form_class = AuthenticationForm
     template_name = 'accounts/login.html'
-    success_url = reverse_lazy('admin/')
+    success_url = reverse_lazy('users:account_settings')
 
 
 class AccountSettingsView(LoginRequiredMixin, FormView):

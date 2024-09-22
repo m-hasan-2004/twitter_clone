@@ -32,7 +32,11 @@
         <!-- Display User Profile -->
         <div class="user-profile">
             <h2> Account Info </h2>
+            {% if user.pic %}
             <img src= {{ user.pic.url }} alt="Profile Picture" class="profile-picture">
+            {% else %}
+            <p style="color: red;">No Profile Picture Has Been Set</p>
+            {% endif %}
             <h3>{{ user.username }}</h3>
             <h4>{{ user.email }}</h3>
 
