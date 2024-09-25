@@ -8,7 +8,7 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ('is_active', 'is_staff', 'date_joined')
     readonly_fields = ('id', 'last_login', 'date_joined')
     fieldsets = (
-        (None, {
+        ("Login Info", {
             'fields': ('username', 'password')
         }),
         ('Personal Info', {
