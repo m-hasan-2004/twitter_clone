@@ -1,8 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from django.views import View
-from .models import models # to be
+from .models import Post, Like, Follow
 
 
 class ExploreView(View):
     def get(self, request):
-        return render(request, 'social/explore.html')
+        posts = Post.objects.all()
+        context = {"posts": posts,}
+        return render(request, 'social/explore.html', context=context)

@@ -17,11 +17,11 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
-    
+
 
 class Like(models.Model):
     user = models.ForeignKey("users.User", verbose_name=_("User"), on_delete=models.CASCADE)
-    post = models.ForeignKey("social.Post", verbose_name=_("Post"), on_delete=models.CASCADE)
+    post = models.ForeignKey("social.Post", verbose_name=_("Post"), on_delete=models.CASCADE, related_name="likes")
     date_created = models.DateTimeField(_("Date Created"), auto_now_add=True)
 
     class Meta:

@@ -41,11 +41,13 @@
 
 .tweet-body {
     margin: 10px 0;
+    line-height: 1.5; /* Improved readability */
 }
 
 .tweet-image {
     max-width: 100%;
     border-radius: 10px;
+    margin-top: 10px; /* Added spacing for tweet image */
 }
 
 .tweet-footer {
@@ -60,8 +62,10 @@ button {
     cursor: pointer;
     color: #1da1f2;
     font-size: 14px;
+    transition: color 0.3s ease; /* Added smooth transition on hover */
 }
 
 button:hover {
     text-decoration: underline;
+    color: #0d95e8; /* Slight color change for hover */
 }

@@ -15,24 +15,22 @@
         {% for post in posts %}
         <div class="tweet-card" id="post-{{ post.id }}">
             <div class="tweet-header">
-                <img src="{{ post.user.profile_picture.url }}" alt="{{ post.user.username }}" class="tweet-avatar">
+                <img src="{{ post.author.pic.url }}" alt="{{ post.author.username }}" class="tweet-avatar">
                 <div class="tweet-user-info">
-                    <strong>{{ post.user.username }}</strong>
-                    <span>@{{ post.user.handle }}</span>
+                    <strong>{{ post.author.first_name }}</strong>
+                    <span>@{{ post.author.username }}</span>
                 </div>
             </div>
             <div class="tweet-body">
-                <p>{{ post.content }}</p>
-                {% if post.image %}
-                    <img src="{{ post.image.url }}" alt="Tweet image" class="tweet-image">
+                <h2>{{ post.title}}</h2>
+                <p>{{ post.description }}</p>
+                {% if post.pic %}
+                    <img src="{{ post.pic.url }}" alt="Tweet image" class="tweet-image">
                 {% endif %}
             </div>
             <div class="tweet-footer">
                 <button class="like-btn" data-post-id="{{ post.id }}">
-                    <i class="fa fa-heart"></i> {{ post.likes.count }} Likes
-                </button>
-                <button class="retweet-btn" data-post-id="{{ post.id }}">
-                    <i class="fa fa-retweet"></i> {{ post.retweets.count }} Retweets
+                    <i class="fa fa-heart"></i> {{ likes }} Likes
                 </button>
                 <button class="comment-btn" data-post-id="{{ post.id }}">
                     <i class="fa fa-comment"></i> {{ post.comments.count }} Comments
