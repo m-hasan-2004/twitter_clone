@@ -34,7 +34,7 @@
             <h2> Account Info </h2>
             {% if user.pic %}
             <img src= {{ user.pic.url }} alt="Profile Picture" class="profile-picture">
-            {% else %}
+            {% else %}  
             <p style="color: red;">No Profile Picture Has Been Set</p>
             {% endif %}
             <h3>{{ user.username }}</h3>
@@ -43,11 +43,11 @@
             <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
             
             <!-- Log Out Button -->
-            <form method="post" action="{% url 'accounts:logout' %}">
+            <form method="post" action="{% url 'users:logout' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Log Out</button>
             </form>
-            <form method="post" action="{% url 'accounts:delete_account' %}">
+            <form method="post" action="{% url 'users:delete_account' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger-deleteaccount">Delete Account</button>
             </form>
