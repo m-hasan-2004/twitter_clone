@@ -147,3 +147,65 @@ form p {
     color: #333;
     margin: 20px 0;
 }
+
+/* css code for change account message*/
+.message-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 100px;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+.message {
+    background-color: #fff;
+    border: 2px solid #C41E3A;
+    color: #C41E3A;
+    padding: 15px 25px;
+    margin: 10px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    width: fit-content;
+    max-width: 80%;
+}
+
+.message.success {
+    background-color: #d4edda;
+    color: #721c24;
+    border-color: #c3e6cb;
+}
+
+.message.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border-color: #f5c6cb;
+}
+
+.message.info {
+    background-color: #d1ecf1;
+    color: #0c5460;
+    border-color: #bee5eb;
+}
+
+.message-container .message {
+    animation: fadeOut 3s forwards;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+}

@@ -4,6 +4,11 @@
 <link rel="stylesheet" href="{% static 'css/account_settings.css' %}">
 {% endblock css %}
 {% block content %}
+<div class="message-container">
+    {% for message in messages %}
+      <div class="message {{ message.tags }}">{{ message }}</div>
+    {% endfor %}
+  </div>
 <div class="account-settings-container">
     <div class="left-column">
         <h1>Account Settings</h1>
