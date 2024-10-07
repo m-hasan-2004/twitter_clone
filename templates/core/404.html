@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Page Not Found - Twitter Clone{% endblock %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'core/404.css' %}">
+{% endblock css %}
+{% block content %}
+    <div class="error-container">
+        <h1 class="error-title">404</h1>
+        <p class="error-message">Oops! The page you're looking for doesn't exist.</p>
+        <a href="{% url 'core:home' %}" class="btn-error-home">Back to Home</a>
+    </div>
+{% endblock %}

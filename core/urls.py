@@ -6,3 +6,5 @@ app_name = 'core'
 urlpatterns = [
     path('', HomeView.as_view(), name='home'),
 ]
+
+handler404 = "core.views.custom_404"
