@@ -41,6 +41,10 @@
             <img src= {{ user.pic.url }} alt="Profile Picture" class="profile-picture">
             {% else %}  
             <p style="color: red;">No Profile Picture Has Been Set</p>
+            <form method="post" action="{% url 'users:account_settings' %}" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form_profile_pic.as_p }}
+                <button type="submit" class="btn btn-primary">Change ProfilePic</button>
             {% endif %}
             <h3>{{ user.username }}</h3>
             <h4>{{ user.email }}</h3>

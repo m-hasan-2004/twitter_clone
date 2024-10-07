@@ -13,16 +13,19 @@ class ProfileForm(forms.ModelForm):
             'first_name': ''
         }
         
+        
 class CustomUserCreationForm(UserCreationForm):
     pic = forms.ImageField(label="Profile Picture", required=False)
     class Meta(UserCreationForm.Meta):
         model = User
         fields = ['username', 'email', 'password1', 'password2', 'pic']
         
+        
 class AuthenticationForm(AuthenticationForm):
     class Meta:
         model = User
         fields = ['username', 'password']
+
 
 class PasswordChangeForm(PasswordChangeForm):
     old_password = forms.CharField(
@@ -39,3 +42,9 @@ class PasswordChangeForm(PasswordChangeForm):
         label="Confirm New Password",
         widget=forms.PasswordInput,
         help_text="")
+    
+
+class ProfilePicChangeForm(forms.ModelForm):
+    class Meta:
+        model = User
+        fields = ['pic']

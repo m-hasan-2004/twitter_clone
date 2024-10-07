@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.views import View
 from django.shortcuts import render, redirect
-from .forms import ProfileForm, PasswordChangeForm, CustomUserCreationForm
+from .forms import ProfileForm, PasswordChangeForm, CustomUserCreationForm, ProfilePicChangeForm
 from django.urls import reverse_lazy
 from django.conf import settings
 from django.contrib.auth.views import LoginView
@@ -37,14 +37,18 @@ class AccountSettingsView(LoginRequiredMixin, View):
     def get(self, request, *args, **kwargs):
         profile_form = ProfileForm(instance=request.user)
         password_form = PasswordChangeForm(user=request.user)
+        profile_pic_form = ProfilePicChangeForm(instance=request.user)
+
         return render(request, self.template_name, {
             'form_profile': profile_form,
             'form_password': password_form,
+            'form_profile_pic': profile_pic_form,
         })
 
     def post(self, request, *args, **kwargs):
         profile_form = ProfileForm(request.POST, instance=request.user)
         password_form = PasswordChangeForm(user=request.user, data=request.POST)
+        profile_pic_form = ProfilePicChangeForm(request.POST, request.FILES, instance=request.user)
 
         if profile_form.is_valid():
             profile_form.save()
@@ -56,11 +60,17 @@ class AccountSettingsView(LoginRequiredMixin, View):
             update_session_auth_hash(request, user)
             messages.success(request, 'Your password has been updated successfully.')
             return redirect(self.success_url)
+        
+        if profile_pic_form.is_valid():
+            profile_pic_form.save()
+            messages.success(request, "Your profile picture has been updated successfully.")
+            return redirect(self.success_url)
 
         # If neither form is valid, re-render with errors
         return render(request, self.template_name, {
             'form_profile': profile_form,
             'form_password': password_form,
+            'form_profile_pic': profile_pic_form,
         })
 
 
