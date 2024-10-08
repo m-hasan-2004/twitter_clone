@@ -66,6 +66,13 @@ button {
 }
 
 button:hover {
-    text-decoration: underline;
     color: #0d95e8; /* Slight color change for hover */
+}
+
+.like-btn {
+    color: red;
+}
+
+.comment-btn {
+    color: red;
 }
