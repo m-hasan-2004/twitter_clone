@@ -14,7 +14,7 @@ class Post(models.Model):
     class Meta:
         verbose_name = _("Post")
         verbose_name_plural = _("Posts")
-
+        
     def __str__(self):
         return self.title
 
@@ -40,6 +40,10 @@ class Follow(models.Model):
     class Meta:
         verbose_name = _("Follow")
         verbose_name_plural = _("Follows")
+
+    @classmethod
+    def is_following(cls, user, author):
+        return cls.objects.filter(follower=user, followed=author).exists()
 
     def __str__(self):
         return f"user: {self.follower} is following {self.following}"

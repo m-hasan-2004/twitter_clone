@@ -30,13 +30,34 @@
     margin-right: 10px;
 }
 
+.tweet-user-info {
+    display: flex;
+    align-items: center;
+}
+
 .tweet-user-info strong {
     font-size: 16px;
+    margin-right: 5px; /* Added margin for spacing */
 }
 
 .tweet-user-info span {
     color: #657786;
     font-size: 14px;
+}
+
+.follow-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #1da1f2;
+    font-size: 14px;
+    margin-left: 10px; /* Space between username and button */
+    display: flex;
+    align-items: center;
+}
+
+.follow-btn i {
+    margin-right: 5px; /* Space between icon and text */
 }
 
 .tweet-body {
