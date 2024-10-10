@@ -1,0 +1,46 @@
+{% extends "base/base.html" %}
+{% load static %}
+{% block title %}
+Twitter Clone | Create & Explore Comments
+{% endblock title %}
+{% block css %}
+<link rel="stylesheet" href="{% static 'css/createandexplorecomments.css' %}">
+{% endblock css %}
+{% block content %}
+    <div class="comment-section">
+        <h1>Comments for {{ post.title }}</h1>
+        <div>
+            {% for comment in comments %}
+                <div class="comment">
+                    <div class="author">{{ comment.author.username }}</div>
+                    <div class="author-profile-pic"> <img class="author-profile-pic" src="{{comment.author.pic.url}}" alt="profile-image"></div>
+                    <div>
+                        <div class="title">{{ comment.title }}</div>
+                        <div class="description"> <strong>Description: </strong>{{ comment.description }}</div>
+                        <!-- Delete Button (shown only for the comment's author) -->
+                        {% if comment.author == request.user %}
+                            <form method="post" class="delete-form">
+                                {% csrf_token %}
+                                <input type="hidden" name="delete_comment_id" value="{{ comment.id }}">
+                                <button type="submit" class="delete-button">Delete</button>
+                            </form>
+                        {% endif %}
+                        {{ comment.date_created }}
+                    </div>
+                </div>
+            {% empty %}
+                <p class="no-comments">No comments yet.</p>
+            {% endfor %}
+        </div>
+        <div class="comment-form">
+            <h2>Leave a Comment</h2>
+            <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <button type="submit">Submit</button>
+            </form>
+        </div>
+    </div>
+{% endblock content %}
+
+

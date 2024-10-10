@@ -96,4 +96,5 @@ button:hover {
 
 .comment-btn {
     color: red;
+    text-decoration: none;
 }

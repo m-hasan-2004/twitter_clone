@@ -41,9 +41,21 @@ class Follow(models.Model):
         verbose_name = _("Follow")
         verbose_name_plural = _("Follows")
 
-    @classmethod
-    def is_following(cls, user, author):
-        return cls.objects.filter(follower=user, followed=author).exists()
-
     def __str__(self):
         return f"user: {self.follower} is following {self.following}"
+    
+    
+class Comment(models.Model):
+    title = models.CharField(_("Title"), max_length=50)
+    description = models.TextField(_("Description"))
+    post = models.ForeignKey("social.post", verbose_name=_("Post"), on_delete=models.CASCADE, related_name="comments")
+    author = models.ForeignKey("users.user", verbose_name=_("User"), on_delete=models.CASCADE, related_name="user")
+    date_created = models.TimeField(_("Date Created"), auto_now=False, auto_now_add=True)
+    
+    class Meta:
+        verbose_name = _("Comment")
+        verbose_name_plural = _("Comments")
+        
+    def __str__(self):
+        return f"COMMENT OF {self.author} ON {self.post}"
+    

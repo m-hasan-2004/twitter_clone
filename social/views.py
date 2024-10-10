@@ -1,7 +1,8 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from users.models import User
-from .models import Post, Like, Follow
+from .forms import CreateCommentForm
+from .models import Post, Like, Follow, Comment
 from django.contrib.auth.mixins import LoginRequiredMixin 
 
 class ExploreView(LoginRequiredMixin, View):
@@ -36,3 +37,44 @@ class ExploreView(LoginRequiredMixin, View):
 
         # Redirect back to explore page
         return redirect('social:explore')
+    
+    
+class CreateAndExploreCommentsView(LoginRequiredMixin, View):
+    def get(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id)  # Fetch the post using UUID
+        comments = post.comments.all()  # Get all comments for the post
+        form = CreateCommentForm()  # Create an empty form instance
+
+        return render(request, "social/createandexplorecomments.html", {
+            "post": post,
+            "comments": comments,
+            "form": form,
+        })
+
+    def post(self, request, post_id):
+        post = get_object_or_404(Post, id=post_id)
+        author = request.user
+
+        # Check if the post request is for comment deletion
+        if 'delete_comment_id' in request.POST:
+            comment_id = request.POST.get('delete_comment_id')
+            comment = get_object_or_404(Comment, id=comment_id, post=post, author=author)
+            comment.delete()
+            return redirect('social:comments', post_id=post.id)
+
+        # Otherwise, process the form submission for new comments
+        form = CreateCommentForm(request.POST)
+        if form.is_valid():
+            new_comment = form.save(commit=False)
+            new_comment.post = post
+            new_comment.author = author
+            new_comment.save()
+
+            return redirect('social:comments', post_id=post.id)
+
+        comments = post.comments.all()
+        return render(request, "social/createandexplorecomments.html", {
+            "post": post,
+            "comments": comments,
+            "form": form,
+        })

@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Post, Like, Follow
+from .models import Post, Like, Follow, Comment
 
 # Register your models here.
 
@@ -13,7 +13,6 @@ class PostAdmin(admin.ModelAdmin):
     list_per_page = 25  
     
     
-    
 @admin.register(Like)
 class LikeAdmin(admin.ModelAdmin):
     list_display = ["user", "post", "date_created"]
@@ -21,6 +20,7 @@ class LikeAdmin(admin.ModelAdmin):
     readonly_fields = ["date_created"]
     ordering = ("-date_created",)
     list_per_page = 50
+    
 
 @admin.register(Follow)
 class FollowAdmin(admin.ModelAdmin):
@@ -29,3 +29,13 @@ class FollowAdmin(admin.ModelAdmin):
     readonly_fields = ["date_created",]
     ordering = ("-date_created",)
     list_per_page = 50    
+    
+    
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ["title", "post", "author"]
+    search_fields = ["author"]
+    readonly_fields = ["author", "post", "date_created"]
+    ordering = ("-date_created",)
+    list_per_page = 50    
+    

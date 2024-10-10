@@ -1,5 +1,5 @@
 from django import forms
-from .models import Like, Follow
+from .models import Like, Follow, Comment
 
 class LikeForm(forms.ModelForm):
     class Meta:
@@ -16,3 +16,9 @@ class FollowForm(forms.ModelForm):
         widgets = {
             'following': forms.HiddenInput(),
         }
+        
+
+class CreateCommentForm(forms.ModelForm):
+    class Meta:
+        model = Comment
+        fields = ["title", "description"]

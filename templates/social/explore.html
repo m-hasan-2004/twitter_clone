@@ -23,7 +23,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="follow_id" value="{{ post.author.id }}">
                         <button type="submit" class="follow-btn">
-                            {% if request.user in post.author %}
+                            {% if request.user in post.author.follower.all %}
                                 <i class="fas fa-user-minus follow-icon"></i> Unfollowdddd
                             {% elif request.user == post.author %}
                             {% else %}
@@ -49,7 +49,7 @@
                     </button>
                 </form>
                 <button class="comment-btn" data-post-id="{{ post.id }}">
-                    <i class="fa fa-comment"></i> {{ post.comments.count }} Comments
+                    <i class="fa fa-comment"></i> {{ post.comments.count }} <a class="comment-btn" href="{% url 'social:comments' post.id %}"> Comments</a>
                 </button>
             </div>
         </div>
