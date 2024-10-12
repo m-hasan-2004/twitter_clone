@@ -1,9 +1,13 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views import View
 from users.models import User
-from .forms import CreateCommentForm
+from .forms import CreateCommentForm, CreatePostForm
 from .models import Post, Like, Follow, Comment
-from django.contrib.auth.mixins import LoginRequiredMixin 
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
+from django.views.generic.edit import DeleteView
+from django.urls import reverse_lazy
+from django.contrib import messages
+from django.http import HttpResponseRedirect
 
 class ExploreView(LoginRequiredMixin, View):
     def get(self, request):
@@ -78,3 +82,41 @@ class CreateAndExploreCommentsView(LoginRequiredMixin, View):
             "comments": comments,
             "form": form,
         })
+
+
+class CreatePost(LoginRequiredMixin, View):
+    def get(self, request):
+        # Render a blank form for creating a post
+        form = CreatePostForm()
+        return render(request, 'social/create_post.html', {'form': form})
+
+    def post(self, request):
+        # Handle the post submission
+        form = CreatePostForm(request.POST, request.FILES)
+        if form.is_valid():
+            # Create a new post but don't save it yet
+            new_post = form.save(commit=False)
+            # Assign the author of the post to the logged-in user
+            new_post.author = request.user
+            # Save the post
+            new_post.save()
+            # Redirect to some page, e.g., the explore page or post details
+            return redirect('social:explore')
+        # If the form is invalid, re-render the page with form errors
+        return render(request, 'social/create_post.html', {'form': form})
+    
+
+class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Post
+    success_url = reverse_lazy('social:explore')
+
+    def test_func(self):
+        post = self.get_object()
+        return self.request.user == post.author
+
+    def delete(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        success_url = self.get_success_url()
+        self.object.delete()
+        messages.success(request, 'Post deleted successfully.')
+        return HttpResponseRedirect(success_url)

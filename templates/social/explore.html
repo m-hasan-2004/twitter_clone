@@ -9,7 +9,7 @@
 {% block content %}
 <div class="explore-container">
     <h1>Explore</h1>
-    
+    <a class="create-post" href="{% url 'social:create_post' %}">Create Your Custom Post</a>
     <div class="explore-feed">
         <!-- Loop through posts -->
         {% for post in posts %}
@@ -24,7 +24,7 @@
                         <input type="hidden" name="follow_id" value="{{ post.author.id }}">
                         <button type="submit" class="follow-btn">
                             {% if request.user in post.author.follower.all %}
-                                <i class="fas fa-user-minus follow-icon"></i> Unfollowdddd
+                                <i class="fas fa-user-minus follow-icon"></i> Unfollow
                             {% elif request.user == post.author %}
                             {% else %}
                                 <i class="fas fa-user-plus follow-icon"></i> Follow
@@ -37,9 +37,12 @@
                 <h2>{{ post.title }}</h2>
                 <p>{{ post.description }}</p>
                 {% if post.pic %}
-                    <img src="{{ post.pic.url }}" alt="Tweet image" class="tweet-image">
+                    <div class="image-container">
+                        <img src="{{ post.pic.url }}" alt="Tweet image" class="tweet-image">
+                        <span class="image-date">{{ post.date_created }}</span>
+                    </div>
                 {% endif %}
-            </div>
+            </div>            
             <div class="tweet-footer">
                 <form method="POST" action="{% url 'social:explore' %}">
                     {% csrf_token %}
@@ -51,6 +54,17 @@
                 <button class="comment-btn" data-post-id="{{ post.id }}">
                     <i class="fa fa-comment"></i> {{ post.comments.count }} <a class="comment-btn" href="{% url 'social:comments' post.id %}"> Comments</a>
                 </button>
+                
+                <!-- Add Delete Form if the post author is the current user -->
+                {% if post.author == request.user %}
+                <form method="POST" action="{% url 'social:delete_post' post.id %}" class="delete-form">
+                    {% csrf_token %}
+                    {{ delete_form.as_p }}  <!-- Render the delete form -->
+                    <button type="submit" class="delete-btn">
+                        <i class="fa fa-trash"></i> Delete
+                    </button>
+                </form>
+                {% endif %}
             </div>
         </div>
         {% empty %}
