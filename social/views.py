@@ -1,4 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
+from django.views.generic import UpdateView
 from django.views import View
 from users.models import User
 from .forms import CreateCommentForm, CreatePostForm
@@ -120,3 +121,18 @@ class DeletePostView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
         self.object.delete()
         messages.success(request, 'Post deleted successfully.')
         return HttpResponseRedirect(success_url)
+
+
+class EditPostView(UpdateView):
+    model = Post
+    template_name = 'social/edit_post.html'  # Create edit_post.html template
+    fields = ['title', 'description', 'pic']  # Fields to edit
+
+    def get_success_url(self):
+        return reverse_lazy('social:explore')
+
+    def dispatch(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        if self.object.author != self.request.user:
+            return redirect('social:explore')
+        return super().dispatch(request, *args, **kwargs)

@@ -1,0 +1,34 @@
+{% extends 'base/base.html' %}
+{% load static %}
+
+{% block title %}Edit Post{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="{% static 'css/edit_post.css' %}">
+{% endblock css %}
+
+{% block content %}
+<div class="create-post-container">
+    <h1>Edit Post</h1>
+    <form method="POST" enctype="multipart/form-data" class="create-post-form">
+        {% csrf_token %}
+        <div class="form-group">
+            {{ form.title.label_tag }}
+            {{ form.title }}
+        </div>
+        <div class="form-group">
+            {{ form.description.label_tag }}
+            {{ form.description }}
+        </div>
+        <div class="form-group">
+            {{ form.pic.label_tag }}
+            {{ form.pic }}
+        </div>
+        <button type="submit" class="submit-btn">Save Changes</button>
+    </form>
+</div>
+{% endblock content %}
+
+{% block js %}
+    <!-- Add any JavaScript if needed -->
+{% endblock js %}

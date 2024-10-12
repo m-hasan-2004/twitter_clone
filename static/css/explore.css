@@ -87,7 +87,11 @@ button {
 }
 
 button:hover {
-    color: #0d95e8; /* Slight color change for hover */
+    color: purple; /* Slight color change for hover */
+}
+
+a:hover {
+    color: purple; /* Slight color change for hover */
 }
 
 .like-btn {
@@ -150,4 +154,14 @@ button:hover {
     padding: 5px;
     border-radius: 5px;
     font-size: 12px;
+}
+
+.edit-btn {
+    color: #1da1f2;
+    text-decoration: none;
+}
+
+.delete-btn {
+    color: #1da1f2;
+    text-decoration: none;
 }
