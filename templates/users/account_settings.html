@@ -8,15 +8,19 @@
     {% for message in messages %}
       <div class="message {{ message.tags }}">{{ message }}</div>
     {% endfor %}
-  </div>
+</div>
+
 <div class="account-settings-container">
     <div class="left-column">
         <h1>Account Settings</h1>
+
         <!-- Profile Update Section -->
         <section class="profile-update">
             <h2>Update Profile</h2>
             <form method="post" action="{% url 'users:account_settings' %}">
                 {% csrf_token %}
+                <!-- Hidden field to identify this form -->
+                <input type="hidden" name="form_type" value="profile_form">
                 {{ form_profile.as_p }}
                 <button type="submit" class="btn btn-primary">Update Profile</button>
             </form>
@@ -27,6 +31,8 @@
             <h2>Change Password</h2>
             <form method="post" action="{% url 'users:account_settings' %}">
                 {% csrf_token %}
+                <!-- Hidden field to identify this form -->
+                <input type="hidden" name="form_type" value="password_form">
                 {{ form_password.as_p }}
                 <button type="submit" class="btn btn-primary">Change Password</button>
             </form>
@@ -36,19 +42,27 @@
     <div class="right-column">
         <!-- Display User Profile -->
         <div class="user-profile">
-            <h2> Account Info </h2>
+            <h2>Account Info</h2>
+
+            <!-- Display Profile Picture if set, otherwise display a message -->
             {% if user.pic %}
-            <img src= {{ user.pic.url }} alt="Profile Picture" class="profile-picture">
-            {% else %}  
+            <img src="{{ user.pic.url }}" alt="Profile Picture" class="profile-picture">
+            {% else %}
             <p style="color: red;">No Profile Picture Has Been Set</p>
+            {% endif %}
+
+            <!-- Profile Picture Form -->
             <form method="post" action="{% url 'users:account_settings' %}" enctype="multipart/form-data">
                 {% csrf_token %}
+                <!-- Hidden field to identify this form -->
+                <input type="hidden" name="form_type" value="profile_pic_form">
                 {{ form_profile_pic.as_p }}
-                <button type="submit" class="btn btn-primary">Change ProfilePic</button>
-            {% endif %}
-            <h3>{{ user.username }}</h3>
-            <h4>{{ user.email }}</h3>
+                <button type="submit" class="btn btn-primary">Change Profile Picture</button>
+            </form>
 
+            <!-- Display user information -->
+            <h3>{{ user.username }}</h3>
+            <h4>{{ user.email }}</h4>
             <p><strong>Name:</strong> {{ user.first_name }} {{ user.last_name }}</p>
             
             <!-- Log Out Button -->
@@ -56,6 +70,8 @@
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger">Log Out</button>
             </form>
+
+            <!-- Delete Account Button -->
             <form method="post" action="{% url 'users:delete_account' %}">
                 {% csrf_token %}
                 <button type="submit" class="btn btn-danger-deleteaccount">Delete Account</button>
@@ -73,4 +89,4 @@
 </div>
 
 <script src="{% static 'js/account_settings.js' %}" defer></script>
-{% endblock %}
+{% endblock %}  
