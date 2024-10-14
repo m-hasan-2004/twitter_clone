@@ -23,7 +23,7 @@
                         {% csrf_token %}
                         <input type="hidden" name="follow_id" value="{{ post.author.id }}">
                         <button type="submit" class="follow-btn">
-                            {% if request.user in post.author.follower.all %}
+                            {% if post.author.id in following_users %}
                                 <i class="fas fa-user-minus follow-icon"></i> Unfollow
                             {% elif request.user == post.author %}
                             {% else %}

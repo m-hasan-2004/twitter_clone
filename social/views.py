@@ -13,9 +13,14 @@ from django.http import HttpResponseRedirect
 class ExploreView(LoginRequiredMixin, View):
     def get(self, request):
         posts = Post.objects.all()
-        context = {"posts": posts}
-        return render(request, 'social/explore.html', context=context)
-
+        # Get a list of users the current user is following
+        following_users = request.user.follower.all().values_list('following__id', flat=True)
+        context = {
+            "posts": posts,
+            "following_users": following_users,  # Pass this list to the template
+        }
+        return render(request, 'social/explore.html', context)
+    
     def post(self, request):
         # Handling likes
         post_id = request.POST.get("post_id")
@@ -31,7 +36,7 @@ class ExploreView(LoginRequiredMixin, View):
         # Handling follows
         follow_id = request.POST.get("follow_id")
         if follow_id:
-            follow_user = get_object_or_404(User, id=follow_id)  # Adjust as necessary
+            follow_user = get_object_or_404(User, id=follow_id)
 
             followed = Follow.objects.filter(follower=request.user, following=follow_user).exists()
 
@@ -42,6 +47,7 @@ class ExploreView(LoginRequiredMixin, View):
 
         # Redirect back to explore page
         return redirect('social:explore')
+
     
     
 class CreateAndExploreCommentsView(LoginRequiredMixin, View):
