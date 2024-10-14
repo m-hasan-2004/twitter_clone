@@ -85,7 +85,7 @@ Everything from post creation to interactions such as likes and follows is handl
     python manage.py runserver
     ```
 
-8. Visit the app at `http://127.0.0.1:8000/` and start exploring the features.
+8. Visit the app at `http://127.0.0.1:8000/home/` and start exploring the features.
 
 ---
 
