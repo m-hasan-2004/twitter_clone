@@ -1,8 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext as _
-from django.contrib.auth.models import AbstractUser, Group, Permission
+from django.contrib.auth.models import AbstractUser, Group, Permission, UserManager
 from uuid import uuid4
-from django.contrib.auth.models import AbstractUser, UserManager
 
 
 class User(AbstractUser):

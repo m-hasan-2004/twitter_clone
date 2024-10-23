@@ -12,12 +12,13 @@ from django.http import HttpResponseRedirect
 
 class ExploreView(LoginRequiredMixin, View):
     def get(self, request):
+        # Get All the Posts that have been Published
         posts = Post.objects.all()
         # Get a list of users the current user is following
         following_users = request.user.follower.all().values_list('following__id', flat=True)
         context = {
             "posts": posts,
-            "following_users": following_users,  # Pass this list to the template
+            "following_users": following_users,
         }
         return render(request, 'social/explore.html', context)
     
