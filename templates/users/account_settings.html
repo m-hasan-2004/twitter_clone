@@ -49,7 +49,7 @@
             {% if user.pic %}
             <img src="{{ user.pic.url }}" alt="Profile Picture" class="profile-picture">
             {% else %}
-            <p style="color: red;">No Profile Picture Has Been Set</p>
+            <div class="user-profile-pic"> <img class="profile-picture" src="/static/images/def_profile.jpg" alt="profile-image"></div>
             {% endif %}
 
             <!-- Profile Picture Form -->

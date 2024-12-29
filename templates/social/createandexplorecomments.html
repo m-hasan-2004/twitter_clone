@@ -11,7 +11,11 @@
             {% for comment in comments %}
                 <div class="comment">
                     <div class="author">{{ comment.author.username }}</div>
+                    {% if img %}
                     <div class="author-profile-pic"> <img class="author-profile-pic" src="{{comment.author.pic.url}}" alt="profile-image"></div>
+                    {% else %}
+                    <div class="author-profile-pic"> <img class="author-profile-pic" src="/static/images/def_profile.jpg" alt="profile-image"></div>
+                    {% endif %}
                     <div>
                         <div class="title">{{ comment.title }}</div>
                         <div class="description"> <strong>Description: </strong>{{ comment.description }}</div>
